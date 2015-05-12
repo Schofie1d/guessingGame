@@ -1,64 +1,45 @@
 <script type="text/javascript">
-var firstChoice, secondChoice, thirdChoice, fourthChoice;
-var yesChoice="yes";
-var noChoice="no";
+var firstChoice, secondChoice, thirdChoice, fourthChoice, message;
+var yesChoice = "yes";
+var noChoice = "no";
+var playerGuess = 0;
+var playerTries=0;
+var rightCombo = Math.floor(Math.random()*10)+1;
+var bearFight= Math.floor(Math.random()*10)+1;
+console.log(rightCombo);
 alert("While hiking in the forest, you discovered a huge cave");
-firstChoice=prompt("Do you want to explore it?");
-if(firstChoice=="yes")
-{
-	alert("You proceed into the dark cave with nothing but your phone light");
-	secondChoice=prompt("All of a sudden, you hear a snake hissing in the darkness. You look down and see a snake with red and black stripes. Is he poisonus?");
-	if(secondChoice=="no")
-	{
-        alert("You proceed farther into the clearly dangerous cave, without a care in the world")
-        thirdChoice=prompt("A giant roar erupts from the depths of the cave, and a huge brown bar emerges into the light of your phone. Do you attempt to scare the bear away? This only works half the time");
-                if(thirdChoice=="yes")
-                {
-        	       var bearFight= Math.floor(Math.random()*10)+1;
-        	       if(bearFight<6)
-        	       {
-        		      alert("You sucessfully scared off the bear! And inside his hibernation den, you discovered D. B. Coopers skeletal remains with a safe with some kind of booby-trap! Be careful, you only have a few chances to guess the right combo before the trap explodes!");
-        		
-        		      var rightCombo= Math.floor(Math.random()*10)+1;
-        		      alert(rightCombo);
-        		      var playerGuess=prompt("What is your guess?");
-        		      var playerTries=0;
-
-        		              if(playerGuess==rightCombo)
-        		              {
-        			             alert("You guessed right!");
-
-        		              }
-        		              else if(playerTries>10)
-        		              {
-        			             alert("You tried too many times!");
-        		              }
-        		              else
-        		              {
-        			             alert("You guessed wrong!");
-        		              }
-        	       }
-
-        	}
-        	else
-        	{
-        		alert("The bear was not intimitated and ate you");
-        	}
-
+firstChoice = prompt("Do you want to explore it?");
+if (firstChoice == "yes") {
+  alert("You proceed into the dark cave with nothing but your phone light");
+  secondChoice = prompt("All of a sudden, you hear a snake hissing in the darkness. You look down and see a snake with red and black stripes. Is he poisonus?");
+  if (secondChoice == "no") {
+    alert("You proceed farther into the clearly dangerous cave, without a care in the world")
+    thirdChoice=prompt("A giant roar erupts from the depths of the cave, and a huge brown bar emerges into the light of your phone. Do you attempt to scare the bear away? This only works half the time");
+    if (thirdChoice == "yes") {
+      if (bearFight < 6) {
+        alert("You sucessfully scared off the bear! And inside his hibernation den, you discovered D. B. Coopers skeletal remains with a safe with some kind of booby-trap! Be careful, you only have a few chances to guess the right combo before the trap explodes!");
+        while(playerTries < 10) {
+          message = "You guessed wrong too many times, and the booby-trap exploded";
+          playerGuess=prompt("What is your guess?");
+          if(playerGuess == rightCombo) {
+             message = "You guessed right!"
+             playerTries += 10;
+          } else {
+            alert("You guessed wrong!");
+            playerTries ++;
+          }
         }
-        else
-        {
-        	alert("You try to run away, but out of instinct the bear chases fleeing pray and catches you, eating you whole.");
-        }
-
-	}
-	else
-	{
+        alert(message);
+      } else {
+        alert("The bear was not intimitated and ate you");
+      }
+    } else {
+      alert("You try to run away, but out of instinct the bear chases fleeing pray and catches you, eating you whole.");
+    }
+	} else {
 		alert("You sprinted away from the snake and clear out of the cave, running away crying");
 	}
-}
-else
-{
+} else {
 	alert("You decided to not be risky and continued on your hike");
 }
 </script>
